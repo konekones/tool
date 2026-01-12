@@ -1,0 +1,348 @@
+@charset "UTF-8";
+
+/* これは販売パッケージ（通常版）と同等の見た目・挙動を確認するためのサンプル用CSSです */
+
+/* 基本設定 */
+body {
+    background: linear-gradient(180deg, #ffffff 0%, #f6f7fb 100%);
+    color: #222;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+code {
+    background: #f0f1f5;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #b23a3a;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.92);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #e6e7ec;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 6px 18px rgba(20, 20, 20, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: #b63b3b; /* 目に痛くない赤系 */
+    text-shadow: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* 検索バー */
+.search-bar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 10px 0 12px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #d6d7de;
+    background: rgba(255, 255, 255, 0.9);
+    color: #222;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #c45858;
+    box-shadow: 0 0 0 3px rgba(198, 88, 88, 0.12);
+}
+
+.search-clear {
+    padding: 12px 12px;
+    border-radius: 8px;
+    border: 1px solid #d6d7de;
+    background: #ffffff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.search-clear:hover {
+    border-color: #c45858;
+    background: #fff7f7;
+}
+
+.search-meta {
+    color: #666;
+    font-size: 0.82rem;
+    margin-bottom: 18px;
+}
+
+/* タグ絞り込み */
+.filter-block {
+    margin: 10px 0 18px;
+    padding: 14px 14px;
+    border: 1px solid #e2e3ea;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 10px 26px rgba(20, 20, 20, 0.06);
+}
+
+.filter-title {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.filter-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+
+.filter-label {
+    width: 64px;
+    color: #666;
+    font-size: 0.85rem;
+    padding-top: 6px;
+    flex: 0 0 auto;
+}
+
+.filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid #d6d7de;
+    background: #ffffff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 0.85rem;
+    user-select: none;
+}
+
+.chip:hover {
+    border-color: #c45858;
+    background: #fff7f7;
+}
+
+.chip.is-active {
+    border-color: #c45858;
+    background: rgba(198, 88, 88, 0.12);
+    color: #8d2a2a;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.filter-actions-left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.is-hidden {
+    display: none !important;
+}
+
+/* アコーディオン設定 */
+.accordion {
+    margin-bottom: 15px;
+    border: 1px solid #e2e3ea;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 10px 26px rgba(20, 20, 20, 0.06);
+    background: #fff;
+}
+
+.accordion-header {
+    background-color: #ffffff;
+    color: #222;
+    padding: 18px 20px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: inherit;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-left: 5px solid rgba(198, 88, 88, 0.55); /* 赤アクセント */
+}
+
+.accordion-header:hover {
+    background-color: #fff7f7;
+}
+
+.accordion-header.active {
+    background-color: rgba(198, 88, 88, 0.10);
+    border-bottom: 1px solid #e2e3ea;
+    border-left: 5px solid #c45858;
+}
+
+.accordion-header::after {
+    content: '▸';
+    font-weight: bold;
+    color: #8d2a2a;
+    margin-left: 10px;
+}
+
+.accordion-header.active::after {
+    content: '▾';
+    color: #8d2a2a;
+}
+
+.panel {
+    padding: 0;
+    background-color: #ffffff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.desc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.desc-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f1f5;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #222;
+}
+
+.desc-item:last-child {
+    border-bottom: none;
+}
+
+.desc-item:hover {
+    background: linear-gradient(90deg, rgba(198, 88, 88, 0.10) 0%, rgba(198, 88, 88, 0.00) 100%);
+    color: #111;
+    padding-left: 25px;
+}
+
+.desc-item::before {
+    content: 'Click to Copy';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    color: #666;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 1px solid #e2e3ea;
+}
+
+.desc-item.is-match {
+    outline: 1px solid rgba(198, 88, 88, 0.35);
+    background: linear-gradient(90deg, rgba(198, 88, 88, 0.07) 0%, rgba(198, 88, 88, 0.00) 100%);
+}
+
+.desc-item:hover::before {
+    opacity: 1;
+}
+
+/* コピー完了トースト */
+#toast {
+    visibility: hidden;
+    min-width: 200px;
+    margin-left: -100px;
+    background: linear-gradient(135deg, #c45858 0%, #b13f3f 100%);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 12px 20px;
+    position: fixed;
+    z-index: 200;
+    left: 50%;
+    bottom: 30px;
+    font-size: 0.9rem;
+    box-shadow: 0 10px 26px rgba(198, 88, 88, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    font-weight: bold;
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.3s, fadeout 0.5s 2.0s;
+    animation: fadein 0.3s, fadeout 0.5s 2.0s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 10px; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 10px; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 10px; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 10px; opacity: 0;}
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+    font-size: 0.75rem;
+}
+
+
