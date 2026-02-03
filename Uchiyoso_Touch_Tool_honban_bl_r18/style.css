@@ -1,0 +1,350 @@
+@charset "UTF-8";
+
+/* これは販売パッケージ（大人向け）と同等の見た目・挙動を確認するためのサンプル用CSSです */
+
+/* 基本設定 */
+body {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b2e 100%); /* うちよそらしいピンク系グラデーション */
+    color: #e0e0e0;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+code {
+    background: #2a2a2a;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #f0a0c0;
+}
+
+header {
+    background-color: rgba(26, 26, 26, 0.95);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #444;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: #f0c0d0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* 検索バー（互換：残してあるが、現状はタグ絞り込みを使用） */
+.search-bar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 10px 0 12px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: rgba(26, 26, 26, 0.6);
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #f0c0d0;
+    box-shadow: 0 0 0 3px rgba(240, 192, 208, 0.15);
+}
+
+.search-clear {
+    padding: 12px 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: rgba(42, 42, 42, 0.8);
+    color: #ddd;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.search-clear:hover {
+    border-color: #f0c0d0;
+    background: rgba(56, 56, 56, 0.9);
+}
+
+.search-meta {
+    color: #999;
+    font-size: 0.82rem;
+    margin-bottom: 18px;
+}
+
+/* タグ絞り込み */
+.filter-block {
+    margin: 10px 0 18px;
+    padding: 14px 14px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    background: rgba(26, 26, 26, 0.55);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.filter-title {
+    font-weight: 700;
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+.filter-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+
+.filter-label {
+    width: 64px;
+    color: #aaa;
+    font-size: 0.85rem;
+    padding-top: 6px;
+    flex: 0 0 auto;
+}
+
+.filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid #444;
+    background: rgba(42, 42, 42, 0.8);
+    color: #ddd;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 0.85rem;
+    user-select: none;
+}
+
+.chip:hover {
+    border-color: #f0c0d0;
+    background: rgba(56, 56, 56, 0.9);
+}
+
+.chip.is-active {
+    border-color: #f0c0d0;
+    background: rgba(240, 192, 208, 0.15);
+    color: #f0c0d0;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.filter-actions-left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.is-hidden {
+    display: none !important;
+}
+
+/* アコーディオン設定 */
+.accordion {
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    background: rgba(26, 26, 26, 0.6);
+}
+
+.accordion.r18-content {
+    border-left: 3px solid #ff6b6b;
+}
+
+.accordion-header {
+    background-color: rgba(42, 42, 42, 0.8);
+    color: #f0f0f0;
+    padding: 18px 20px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: inherit;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-left: 4px solid transparent;
+}
+
+.accordion-header:hover {
+    background-color: rgba(53, 53, 53, 0.9);
+}
+
+.accordion-header.active {
+    background-color: rgba(56, 56, 56, 0.9);
+    border-bottom: 1px solid #555;
+    border-left: 4px solid #f0a0c0;
+}
+
+.accordion-header::after {
+    content: '▸';
+    font-weight: bold;
+    color: #888;
+    margin-left: 10px;
+}
+
+.accordion-header.active::after {
+    content: '▾';
+    color: #f0c0d0;
+}
+
+.panel {
+    padding: 0;
+    background-color: rgba(26, 26, 26, 0.6);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.desc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.desc-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(68, 68, 68, 0.7);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #e0e0e0;
+}
+
+.desc-item:last-child {
+    border-bottom: none;
+}
+
+.desc-item:hover {
+    background: rgba(240, 160, 192, 0.12);
+    padding-left: 25px;
+}
+
+.desc-item::before {
+    content: 'Click to Copy';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    color: #aaa;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    background: rgba(26, 26, 26, 0.85);
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 1px solid #444;
+}
+
+.desc-item.is-match {
+    outline: 1px solid rgba(240, 192, 208, 0.35);
+    background: rgba(240, 160, 192, 0.08);
+}
+
+.desc-item:hover::before {
+    opacity: 1;
+}
+
+/* コピー完了トースト */
+#toast {
+    visibility: hidden;
+    min-width: 200px;
+    margin-left: -100px;
+    background: rgba(42, 42, 42, 0.95);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 12px 20px;
+    position: fixed;
+    z-index: 200;
+    left: 50%;
+    bottom: 30px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    border: 1px solid #555;
+    font-weight: bold;
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.3s, fadeout 0.5s 2.0s;
+    animation: fadein 0.3s, fadeout 0.5s 2.0s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 10px; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 10px; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 10px; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 10px; opacity: 0;}
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+    font-size: 0.75rem;
+}
+
